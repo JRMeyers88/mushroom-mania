@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MUSHROOOOOOOOOMS</title>
+</head>
+<body ng-app="app">
+	<h1>MUSHROOMS ARE RAD</h1>
+	<input type="text" ng-model="mushFinder" placeholder="Find your Mush">
+<!-- 	<div>
+		<ul ng-repeat="mush in mushList | filter: mushFinder">
+		<li>{{mush.name}}</li>
+		</ul>
+	</div> -->
+
+
+	<div ng-controller="MushController">
+
+		<div ng-init="edible = false">
+
+			<input type="button" value="toggle" ng-click="edible = !edible">
+
+			<span ng-show="edible">
+				<h2>These are poisonous</h2>
+				<li ng-repeat="mush in mushList">
+					{{mush.name}}: edible? {{mush.edible}}
+				</li>
+			</span>
+
+			<span ng-hide="edible">
+				<h2>These are not poisonous</h2>
+				<li ng-repeat="mush in mushList">
+					{{mush.name}}: edible? {{mush.edible}}
+				</li>
+			</span>
+
+		</div>
+
+	</div>
+
+
+	<!-- <p ng-init="allowed = false">
+		The secret code is
+		<span ng-show="allowed">0123</span>
+		<span ng-hide="allowed">not for you sucka</span>
+		<br>
+		<input type="button" value="toggle" ng-click="allowed = !allowed">
+	</p> -->
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

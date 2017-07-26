@@ -20,10 +20,11 @@ myApp.factory('MushFactory', function($q, $http) {
 myApp.controller('MushController', function($scope, MushFactory) {
 	MushFactory.getMush()
 	.then( (mushData) => {
+		$scope.mushArr = [];
 		$scope.mushList = mushData.data.mushrooms;
+		angular.forEach($scope.mushList, function(shroom) {
+			$scope.mushArr.push(shroom);
+		});
 	});
 });
 
-// myApp.controller('EdibleMush', function($scope, MushController) {
-// 	$scope.mushList.edible = 
-// });

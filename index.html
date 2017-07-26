@@ -5,31 +5,27 @@
 </head>
 <body ng-app="app">
 	<h1>MUSHROOMS ARE RAD</h1>
-	<input type="text" ng-model="mushFinder" placeholder="Find your Mush">
-<!-- 	<div>
-		<ul ng-repeat="mush in mushList | filter: mushFinder">
-		<li>{{mush.name}}</li>
-		</ul>
-	</div> -->
-
-
 	<div ng-controller="MushController">
 
-		<div ng-init="edible = false">
+	<input type="text" ng-model="mushFinder" placeholder="Find your Mush">
 
-			<input type="button" value="toggle" ng-click="edible = !edible">
 
-			<span ng-show="edible">
+
+		<div ng-init="poisonous = false">
+
+			<input type="button" value="toggle" ng-click="poisonous = !poisonous">
+
+			<span ng-show="poisonous">
 				<h2>These are poisonous</h2>
-				<li ng-repeat="mush in mushList">
-					{{mush.name}}: edible? {{mush.edible}}
+				<li ng-repeat="mush in mushArr | filter:{edible:false} | filter: mushFinder">
+					{{mush.name}}: <br> {{mush.description}}
 				</li>
 			</span>
 
-			<span ng-hide="edible">
+			<span ng-hide="poisonous">
 				<h2>These are not poisonous</h2>
-				<li ng-repeat="mush in mushList">
-					{{mush.name}}: edible? {{mush.edible}}
+				<li ng-repeat="mush in mushArr | filter:{edible:true} | filter: mushFinder">
+					{{mush.name}}: <br> {{mush.description}}
 				</li>
 			</span>
 
